@@ -1,0 +1,32 @@
+﻿@model IEnumerable<projectX.Models.Review>
+
+<h1>Reviews</h1>
+
+<a asp-action="Create" class="btn btn-primary">Add New Review</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Movie</th>
+            <th>User</th>
+            <th>Comment</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var review in Model)
+        {
+            <tr>
+                <td>@review.Id</td>
+                <td>@review.Movie?.Title</td>
+                <td>@review.User?.Username</td>
+                <td>@review.Comment</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@review.Id" class="btn btn-warning">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@review.Id" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

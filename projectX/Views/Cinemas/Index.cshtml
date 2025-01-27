@@ -1,0 +1,29 @@
+﻿@model IEnumerable<projectX.Models.Cinema>
+
+<h1>Cinemas</h1>
+
+<a asp-action="Create" class="btn btn-primary">Add New Cinema</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Address</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var cinema in Model)
+        {
+            <tr>
+                <td>@cinema.Id</td>
+                <td>@cinema.Name</td>
+                <td>@cinema.Adress</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@cinema.Id" class="btn btn-warning">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@cinema.Id" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

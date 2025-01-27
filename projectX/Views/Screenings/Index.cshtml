@@ -1,0 +1,31 @@
+﻿@model IEnumerable<projectX.Models.Screening>
+
+<h1>Screenings</h1>
+
+<a asp-action="Create" class="btn btn-primary">Add New Screening</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Movie name</th>
+            <th>ScreeningTime</th>
+            <td>Cinema</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var screening in Model)
+        {
+            <tr>
+                <td>@screening.Id</td>
+                <td>@screening.Name</td>
+                <td>@screening.ScreeningTime</td>
+                <td>@string.Join(", ", screening.ScreeningCinemas.Select(sc => sc.Cinema.Name))</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@screening.Id" class="btn btn-warning">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@screening.Id" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

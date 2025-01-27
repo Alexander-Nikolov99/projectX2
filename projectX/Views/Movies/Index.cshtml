@@ -1,0 +1,34 @@
+﻿@model IEnumerable<projectX.Models.Movie>
+
+<h1>Movies</h1>
+
+<a asp-action="Create" class="btn btn-primary">Add New Movie</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Duration</th>
+            <th>Release Date</th>
+            <th>Rating</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var movie in Model)
+        {
+            <tr>
+                <td>@movie.Id</td>
+                <td>@movie.Title</td>
+                <td>@movie.Duration</td>
+                <td>@movie.ReleaseDate.ToShortDateString()</td>
+                <td>@movie.Rating</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@movie.Id" class="btn btn-warning">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@movie.Id" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
